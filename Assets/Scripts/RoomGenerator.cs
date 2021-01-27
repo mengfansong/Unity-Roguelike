@@ -64,6 +64,7 @@ public class RoomGenerator : MonoBehaviour
         for (int i = 0; i < roomNumber; i++)
         {
             rooms.Add(Instantiate(roomPrefab, generatorPoint.position, Quaternion.identity).GetComponent<Room>());
+            Debug.Log(i);
             //改变point位置
             ChangePointPosition();
         }
@@ -92,7 +93,6 @@ public class RoomGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            //Debug.Log("1");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
@@ -196,8 +196,6 @@ public class RoomGenerator : MonoBehaviour
             case 4:
                 Instantiate(wallType.wallUDLR, roomPosition, Quaternion.identity);
                 break;
-
-
 
         }
     }

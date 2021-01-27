@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
 
+    public float speed;
+
     Vector2 movement;
     // Start is called before the first frame update
     void Start()
@@ -16,12 +18,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
-        string[] strs = { "123", "234", "345" };
-        Array.Reverse(strs);
-        foreach (var item in strs)
-        {
-            Debug.Log(item);
-        }
         
 
 
@@ -32,7 +28,22 @@ public class PlayerController : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        SwitchAnim();
+
+        if (movement.x != 0)        //转向
+        {
+            transform.localScale = new Vector3(movement.x, 1, 1);
+        } 
     }
 
-    
+    private void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+    }
+
+    void SwitchAnim()
+    {
+        animator.SetFloat("Speed", movement.magnitude);
+    }
+
 }
