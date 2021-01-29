@@ -56,6 +56,9 @@ public class RoomGenerator : MonoBehaviour
     public WallType wallType;
 
 
+    private bool mapActive = false;
+    public GameObject map;
+
 
 
     // Start is called before the first frame update
@@ -67,6 +70,8 @@ public class RoomGenerator : MonoBehaviour
             Debug.Log(i);
             //改变point位置
             ChangePointPosition();
+
+            map.SetActive(mapActive);
         }
 
         rooms[0].GetComponent<SpriteRenderer>().color = startColor;
@@ -91,10 +96,18 @@ public class RoomGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        //if (Input.GetKeyDown(KeyCode.C))
+        //{
+        //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //}
+
+        if (Input.GetKeyDown(KeyCode.M))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            mapActive = !mapActive;
+            
+            map.SetActive(mapActive);
         }
+
     }
 
     public void ChangePointPosition()

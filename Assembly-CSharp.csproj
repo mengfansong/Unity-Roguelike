@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Room.cs" />
     <Compile Include="Assets\Scripts\RoomGenerator.cs" />
+    <Compile Include="Assets\Scripts\WallMap.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:/Program Files/U3D/Unity/2019.4.17f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
